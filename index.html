@@ -145,6 +145,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sparkyqin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sparkyqin">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/21/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/" class="post-title-link" itemprop="url">我的简历</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-21 17:19:02 / Modified: 17:19:37" itemprop="dateCreated datePublished" datetime="2022-05-21T17:19:02+08:00">2022-05-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
+<li>手机：137-0919-0278</li>
+<li>Email：<a href="mailto:&#x73;&#112;&#x61;&#x72;&#107;&#121;&#113;&#105;&#x6e;&#121;&#x61;&#110;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x73;&#112;&#x61;&#x72;&#107;&#121;&#113;&#105;&#x6e;&#121;&#x61;&#110;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li>微信号：sparkyqin</li>
+</ul>
+<h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
+<li>秦岩/男/1988</li>
+<li>本硕连读/西安电子科技大学/电子信息工程 2006-2013</li>
+<li>期望职位：Java高级程序员，后端架构师</li>
+</ul>
+<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="华为技术有限公司-（-2014年7月-至今-）"><a href="#华为技术有限公司-（-2014年7月-至今-）" class="headerlink" title="华为技术有限公司 （ 2014年7月 ~ 至今 ）"></a>华为技术有限公司 （ 2014年7月 ~ 至今 ）</h2><h3 id="研发效率提升项目"><a href="#研发效率提升项目" class="headerlink" title="研发效率提升项目"></a>研发效率提升项目</h3><ul>
+<li>该项目主要以提升研发效率为目的，打造一站式研发工具链。作为该项目技术Leader，带领10人开发团队，不仅负责方案设计，核心代码开发，同时负责需求整理和项目推进</li>
+<li>独立设计并落地容器化构建方案，解决构建环境搭建和冲突的难题。使用Kubernetes集群管理容器，挂载NFS实现容器空间扩展及共享，开发构建容器分配服务，对外提供rest接口并与命令行工具和VSCode对接，对内定时清理长期不用的容器，使用配置化方案实现容器镜像的灵活定制及Kubernetes集群的横向扩展，实现开发人员秒级获取构建环境，提升开发效率50%；容器间共享宿主机资源，资源利用率提升80%</li>
+<li>设计UT辅助方案，解决存量代码开发UT时Mock数据难的问题。结合Java Agent和字节码增强技术，对运行时程序进行动态插桩，记录指定方法的入参和出参等信息，最后结合FreeMarker和Jackson反序列化生成UT代码，使测试数据的收集、归纳和使用效率提升10倍，UT覆盖率得以迅速提升</li>
+<li>设计精准UT方案，解决代码合入门禁耗时长的问题。前端使用Jacoco采集上报UT覆盖率信息，后端采用Netty接收并解析代码与UT映射关系并存储至Redis，在门禁执行时可根据映射关系仅执行合入代码对应的UT，使得门禁耗时总体下降55%</li>
+</ul>
+<h3 id="畅连通话服务端项目"><a href="#畅连通话服务端项目" class="headerlink" title="畅连通话服务端项目"></a>畅连通话服务端项目</h3><ul>
+<li>该项目为40+人的团队，涉及中国、亚非拉、欧洲三大片区，支撑亿级用户容量。作为项目核心开发人员，主要负责部署架构设计及核心代码开发，主导团队进行DevOps实践，不断改进工程能力，负责安排和指导印度团队工作，使其高效产出和自我成长</li>
+<li>主导服务端性能调优工作，提升吞吐量及资源利用率。对微服务进行多维度性能优化，具体措施包括JVM参数调优，充分利用内存并减少GC，MySQLc采用分库分表及读写分离架构，引入缓存并优化索引、连接数、减少写操作等，提升读写性能，使用JVisualVM观测压测状态下服务的cpu、线程状态及热点函数，寻找性能瓶颈，采用log4j2全异步模式提升日志输出性能，Kafka采用异步提交模式提升消息发送性能，最终整体性能提升3倍以上</li>
+<li>设计并实现漫游就近接入方案，解决隐私和时延问题。使用全局缓存解决信息同步问题，各代理服务定时上报自身信息至全局缓存，并定时更新对应归属地服务信息；使用netty解决互连问题，终端就近接入代理服务后，根据接入端口号从全局缓存获取所在地的真实服务信息并建立连接，代理服务关联两个连接并做消息透传，确保隐私安全，且代理服务和真实服务走专线网络可减少时延</li>
+</ul>
+<h3 id="其他项目"><a href="#其他项目" class="headerlink" title="其他项目"></a>其他项目</h3><ul>
+<li>负责Android产品的交付工作，其产品特点是型号繁多，定制需求多，对责任模块进行解耦分层优化，将相对稳定的部分作为公共组件，将定制的部分抽取为可配置组件，在人力和时间有限的情况下，实现高质量交付</li>
+<li>负责电信网管补丁开发及运维工作，期间开发多款效率提升工具，包括SQL增量检查工具提升版本构建成功率，补丁合入工具提升补丁版本开发效率，Sqlserver工具提升单机版问题定位效率，案例地图提升现网问题解决效率</li>
+</ul>
+<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p>
+<ul>
+<li>编程语言：Java/C/C++/Python</li>
+<li>Web框架：Spring/MyBatis</li>
+<li>数据库相关：MySQL/Redis</li>
+<li>服务器相关：Linux/Shell</li>
+</ul>
+<h1 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h1><ul>
+<li>善于利用工具提升工作效率，善于攻关技术难题，喜欢做有挑战的事情</li>
+<li>良好的团队合作精神和高度的责任感，承压能力强，具备吃苦耐劳和创新精神</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -461,7 +555,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
