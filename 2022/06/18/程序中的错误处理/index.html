@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sparkyqin">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="传统的错误检查通过函数的返回值标识是否有错，然后通过全局的errno变量并配合一个 errstr 的数组来告诉你为什么出错，如下代码所示 12345678910111213141516171819long val &#x3D; strtol(in_str, &amp;endptr, 10);  &#x2F;&#x2F;10的意思是10进制&#x2F;&#x2F;如果无法转换if (endptr &#x3D;&#x3D; str) &amp;#123;    fprintf(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序中的错误处理">
+<meta property="og:url" content="http://example.com/2022/06/18/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="sparkyqin">
+<meta property="og:description" content="传统的错误检查通过函数的返回值标识是否有错，然后通过全局的errno变量并配合一个 errstr 的数组来告诉你为什么出错，如下代码所示 12345678910111213141516171819long val &#x3D; strtol(in_str, &amp;endptr, 10);  &#x2F;&#x2F;10的意思是10进制&#x2F;&#x2F;如果无法转换if (endptr &#x3D;&#x3D; str) &amp;#123;    fprintf(">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-18T08:34:26.000Z">
+<meta property="article:modified_time" content="2022-06-18T09:53:08.051Z">
 <meta property="article:author" content="sparkyqin">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/06/18/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>sparkyqin</title>
+  <title>程序中的错误处理 | sparkyqin</title>
   
 
 
@@ -139,9 +143,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -157,10 +162,9 @@
       <meta itemprop="name" content="sparkyqin">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/18/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">程序中的错误处理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          程序中的错误处理
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -184,7 +188,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="传统的错误检查"><a href="#传统的错误检查" class="headerlink" title="传统的错误检查"></a>传统的错误检查</h2><p>通过函数的返回值标识是否有错，然后通过全局的<code>errno</code>变量并配合一个 <code>errstr</code> 的数组来告诉你为什么出错，如下代码所示</p>
+        <h2 id="传统的错误检查"><a href="#传统的错误检查" class="headerlink" title="传统的错误检查"></a>传统的错误检查</h2><p>通过函数的返回值标识是否有错，然后通过全局的<code>errno</code>变量并配合一个 <code>errstr</code> 的数组来告诉你为什么出错，如下代码所示</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> val = strtol(in_str, &amp;endptr, <span class="number">10</span>);  <span class="comment">//10的意思是10进制</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果无法转换</span></span><br><span class="line"><span class="keyword">if</span> (endptr == str) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;No digits were found\n&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果整型溢出了</span></span><br><span class="line"><span class="keyword">if</span> ((errno == ERANGE &amp;&amp; (val == LONG_MAX || val == LONG_MIN)) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;ERROR: number out of range for LONG\n&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果是其它错误</span></span><br><span class="line"><span class="keyword">if</span> (errno != <span class="number">0</span> &amp;&amp; val == <span class="number">0</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;strtol&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -284,411 +288,30 @@
 <li><strong>对于分布式的系统，推荐使用APM相关的软件</strong>。尤其是使用Zipkin这样的服务调用跟踪的分析来关联错误。</li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sparkyqin">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sparkyqin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/21/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/" class="post-title-link" itemprop="url">我的简历</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-21 17:19:02" itemprop="dateCreated datePublished" datetime="2022-05-21T17:19:02+08:00">2022-05-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-02 01:31:21" itemprop="dateModified" datetime="2022-06-02T01:31:21+08:00">2022-06-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>姓名：秦岩</li>
-<li>性别：男</li>
-<li>出生日期：1988/2/22</li>
-<li>现居地：中国西安</li>
-<li>手机：137-0919-0278</li>
-<li>邮箱：<a href="mailto:&#115;&#x70;&#x61;&#114;&#107;&#121;&#x71;&#105;&#110;&#121;&#x61;&#x6e;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#115;&#x70;&#x61;&#114;&#107;&#121;&#x71;&#105;&#110;&#121;&#x61;&#x6e;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a></li>
-<li>微信号：sparkyqin</li>
-</ul>
-<h1 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h1><ul>
-<li>2010.9-2013.4 硕士/西安电子科技大学/信号与信息处理（本硕连读）</li>
-<li>2006.9-2010.7 本科/西安电子科技大学/电子信息工程（综合排名：3/60）</li>
-</ul>
-<h1 id="获奖情况"><a href="#获奖情况" class="headerlink" title="获奖情况"></a>获奖情况</h1><ul>
-<li>2010-2011 连续两年获得西安电子科技大学硕士一等奖学金，优秀研究生</li>
-<li>2010.7        西安电子科技大学优秀毕业设计及优秀毕业生</li>
-<li>2009.12      国家奖学金（获奖比例4%）</li>
-<li>2009.10      西安电子科技大学电子设计竞赛一等奖</li>
-<li>2009.5        美国大学生数学建模竞赛（ICM）一等奖（获奖比例10%）<a target="_blank" rel="noopener" href="https://www.comap-math.com/mcm/2009Certs/4170.pdf">https://www.comap-math.com/mcm/2009Certs/4170.pdf</a></li>
-<li>2008.10      全国大学生数学建模竞赛陕西省一等奖</li>
-<li>2006-2008  获得西安电子科技大学本科一等奖学金一次，二等奖学金两次</li>
-</ul>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><ul>
-<li>2014.7-至今     华为技术有限公司/Java高级开发</li>
-<li>2013.4-2014.7 中兴通讯股份有限公司/嵌入式软件开发</li>
-</ul>
-<h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><h3 id="一站式软件研发管理平台-（-2020年12月-至今-）"><a href="#一站式软件研发管理平台-（-2020年12月-至今-）" class="headerlink" title="一站式软件研发管理平台 （ 2020年12月 ~ 至今 ）"></a>一站式软件研发管理平台 （ 2020年12月 ~ 至今 ）</h3><h4 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a>项目描述</h4><p>该项目提供一站式开发协作服务，帮助研发团队快速落地敏捷开发与 DevOps 开发方式，实现研发效能提升。</p>
-<h4 id="实现技术"><a href="#实现技术" class="headerlink" title="实现技术"></a>实现技术</h4><p>Spring + Netty + Kubernetes + MyBatis + MySQL + Redis + RabbitMQ + MongoDB</p>
-<h4 id="项目职责"><a href="#项目职责" class="headerlink" title="项目职责"></a>项目职责</h4><ul>
-<li>作为该项目技术Leader，带领10+人开发团队，负责后端系统设计与研发工作，开发高质量的软件设计和架构，主导技术调研和实践，推动和规划业务技术架构方向</li>
-<li>采用容器化方案，解决环境搭建难且利用率低的问题。自研服务对接Kubernetes集群，实现定制化容器的管理接口，可在秒级启动所需镜像及配置的容器，提升环境获取效率50%以上；容器间共享宿主机资源，再加上定时清理任务，使得资源利用率提升80%；此外，挂载NFS实现容器空间扩展及共享</li>
-<li>采用增量化方案，解决MergeRequest门禁全量UT执行导致的低效问题。通过采集全量UT覆盖率数据并解析得到class与UT的映射关系，由此可在门禁时仅执行变更class对应的UT来提升门禁效率，采用Netty实现采集及解析服务来应对高并发上报场景，存储采用redis来提升数据写入和读取性能，同时，利用redis的set结构和过期时间解决数据去重和旧数据老化的问题，效能提升55%</li>
-<li>采用无侵入式插桩方案，解决线上问题定位难的问题。结合Java Agent和字节码增强技术，对运行时程序进行动态插桩，可在不修改源代码的情况下序列化指定方法的运行时数据，这些数据不仅可以用来辅助定位问题，也可对其进行反序列化后用来Mock关键方法，结合FreeMarker实现UT代码生成，实现问题定位与测试用例固化的双重目标</li>
-<li>使用线程编排技术既提升了任务的并行性，又保证了执行顺序，提升代码分析性能，对其分析结果使用对象存储进行保存，使用压缩流方式对其读写，提升了超大分析结果的传输性能并减少其空间占用</li>
-</ul>
-<h3 id="大流量实时通信平台（-2018年12月-2020年11月）"><a href="#大流量实时通信平台（-2018年12月-2020年11月）" class="headerlink" title="大流量实时通信平台（ 2018年12月 ~ 2020年11月）"></a>大流量实时通信平台（ 2018年12月 ~ 2020年11月）</h3><h4 id="项目描述-1"><a href="#项目描述-1" class="headerlink" title="项目描述"></a>项目描述</h4><p>该项目为亿级用户容量的华为畅连IM提供信令交互及用户管理服务，涉及中国、亚非拉、欧洲三大片区，涉及语音、视频、消息等业务。</p>
-<h4 id="实现技术-1"><a href="#实现技术-1" class="headerlink" title="实现技术"></a>实现技术</h4><p>Nginx + Spring + Netty + MyBatis + MySQL + Redis + Kafka + Cassandra</p>
-<h4 id="项目职责-1"><a href="#项目职责-1" class="headerlink" title="项目职责"></a>项目职责</h4><ul>
-<li>作为项目技术骨干，完成项目从0到1的构建，主要负责架构设计及核心代码开发，同时负责攻关高并发、稳定性、海量数据等技术难题，期间主导百万级数据迁移、上百节点服务扩/缩容等重大现网变更的方案设计和操作</li>
-<li>主导服务端性能调优工作，提升吞吐量及资源利用率。对微服务进行多维度性能优化，具体措施包括JVM参数调优，充分利用内存并减少GC，对MySQL进行分库分表及读写分离，引入缓存并优化索引、连接数、减少写操作等，提升读写性能，使用JVisualVM观测VM的cpu、线程状态及热点函数，寻找性能瓶颈，采用log4j2全异步模式提升日志输出性能，Kafka采用异步提交模式提升消息发送性能，系统整体性能提升3倍以上</li>
-<li>设计代理接入方案，解决隐私安全和传输时延问题。代理服务与真实服务均使用netty实现，以此应对高并发长连接场景，使用全局缓存确保信息同步，终端就近接入代理服务后，可在全局缓存中获取所在地的真实服务信息并建立连接，代理服务关联两个连接并做消息透传，确保隐私安全，且通过专线网络连接代理服务和真实服务，以此减少传输时延</li>
-</ul>
-<h3 id="Android系统定制需求开发（-2017年12月-2018年11月）"><a href="#Android系统定制需求开发（-2017年12月-2018年11月）" class="headerlink" title="Android系统定制需求开发（ 2017年12月 ~ 2018年11月）"></a>Android系统定制需求开发（ 2017年12月 ~ 2018年11月）</h3><h4 id="项目描述-2"><a href="#项目描述-2" class="headerlink" title="项目描述"></a>项目描述</h4><p>该项目主要解决Android系统在各手机型号上的适配及全球各片区的定制需求开发。</p>
-<h4 id="实现技术-2"><a href="#实现技术-2" class="headerlink" title="实现技术"></a>实现技术</h4><p>Android Framework + SQLite + Linux</p>
-<h4 id="项目职责-2"><a href="#项目职责-2" class="headerlink" title="项目职责"></a>项目职责</h4><ul>
-<li>负责Android系统Framework及Linux内核等系统框架层的优化、关键模块开发实现及调试定位；对Android系统的性能和稳定性负责，以及应用层与操作系统层的适配调优；负责关键问题攻关，包括内存泄露、通话掉话、驻网不稳等</li>
-<li>负责梳理ViLTE/VoWiFi业务在海思、高通、MTK等平台上的流程差异；负责运营商定制需求开发，主要涉及UI界面、视频通话以及VoWiFi底层协议等</li>
-</ul>
-<h3 id="大规模通信设备配置管理平台（-2014年7月-2017年11月）"><a href="#大规模通信设备配置管理平台（-2014年7月-2017年11月）" class="headerlink" title="大规模通信设备配置管理平台（ 2014年7月 ~ 2017年11月）"></a>大规模通信设备配置管理平台（ 2014年7月 ~ 2017年11月）</h3><h4 id="项目描述-3"><a href="#项目描述-3" class="headerlink" title="项目描述"></a>项目描述</h4><p>该项目为华为通信设备的配套服务，为全球各大运营商提供海量通信设备的管理能力，包括设备故障管理、设备网络拓扑、性能监测以及配置管理等功能。</p>
-<h4 id="实现技术-3"><a href="#实现技术-3" class="headerlink" title="实现技术"></a>实现技术</h4><p>Java Swing + C++自研服务架构 + Corba + Oracle + Sybase + SQLServer</p>
-<h4 id="项目职责-3"><a href="#项目职责-3" class="headerlink" title="项目职责"></a>项目职责</h4><ul>
-<li>负责系统日常运维，包括数据库系统的监控、备份、性能调优和故障处理，保障局点的重大现网操作，负责现网紧急问题的攻关定位，主导补丁版本的发布及案例输出</li>
-<li>创建自动化工具提升工作效率，包括SQL增量检查工具提升版本构建成功率，补丁合入工具提升补丁版本开发效率，Sqlserver工具提升单机版问题定位效率，案例地图提升现网问题解决效率</li>
-</ul>
-<h3 id="嵌入式系统驱动开发（-2013年4月-2014年7月）"><a href="#嵌入式系统驱动开发（-2013年4月-2014年7月）" class="headerlink" title="嵌入式系统驱动开发（ 2013年4月 ~ 2014年7月）"></a>嵌入式系统驱动开发（ 2013年4月 ~ 2014年7月）</h3><h4 id="项目描述-4"><a href="#项目描述-4" class="headerlink" title="项目描述"></a>项目描述</h4><p>该项目主要完成机顶盒芯片的系统移植和驱动适配工作，实现网络传输、数据存储、音视频解码等功能。</p>
-<h4 id="实现技术-4"><a href="#实现技术-4" class="headerlink" title="实现技术"></a>实现技术</h4><p>Arm + Linux + Bootloader + kernel</p>
-<h4 id="项目职责-4"><a href="#项目职责-4" class="headerlink" title="项目职责"></a>项目职责</h4><ul>
-<li>负责Bootloader、Kernel、存储/网络驱动在Cortex-A9平台的移植、裁剪、调试和优化</li>
-<li>协助测试工程师在FPGA逻辑芯片下进行测试用例开发和测试</li>
-<li>使用MFC开发刷机工具，使用多线程技术实现并行刷入多台嵌入式设备，提升刷机和验证效率</li>
-</ul>
-<h1 id="技能描述"><a href="#技能描述" class="headerlink" title="技能描述"></a>技能描述</h1><ul>
-<li>丰富的Java及Java Web开发经验，具有扎实的程序设计基本功，能独立承担功能模块的架构设计开发</li>
-<li>熟悉Spring、MyBatis、Netty等主流框架，能够进行合理应用并解决需求中遇到的问题</li>
-<li>熟悉MySQL数据库表设计和优化，熟悉Redis、MongoDB、Kafka、RabbitMQ等常用中间件</li>
-<li>熟悉大流量、高并发、高性能分布式系统的设计及应用，擅长性能调优</li>
-</ul>
-<h1 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h1><ul>
-<li>善于利用工具提升工作效率，善于攻关技术难题，喜欢做有挑战的事情</li>
-<li>对技术有强烈兴趣，学习能力强，技术视野广阔，乐于不断学习新知识</li>
-<li>具有良好的团队合作精神和高度的责任感，善于倾听和团队合作</li>
-</ul>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/21/%E6%88%91%E7%9A%84%E7%AE%80%E5%8E%86/" rel="prev" title="我的简历">
+      <i class="fa fa-chevron-left"></i> 我的简历
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sparkyqin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sparkyqin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/" class="post-title-link" itemprop="url">当下的华语电影</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-04-21 00:48:47 / Modified: 01:23:25" itemprop="dateCreated datePublished" datetime="2022-04-21T00:48:47+08:00">2022-04-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="为什么今年戛纳没有华语电影"><a href="#为什么今年戛纳没有华语电影" class="headerlink" title="为什么今年戛纳没有华语电影"></a>为什么今年戛纳没有华语电影</h2><p>第75届戛纳国际电影节于2022年4月14日公布入围片单，电影节将于5月17日至28日举行。今年的主竞赛单元可谓看点颇多，4位金棕榈奖得主入围主竞赛，是枝裕和与朴赞郁将携两部韩国电影《掮客》和《分手的决心》同场竞技，汤唯也将凭借《分手的决心》重返戛纳，但遗憾的是各单元均无华语片入围。</p>
-<p>这几年华语片确实比较式微，我觉得是有很多方面的，首先戛纳零入围也无需刻意放大，因为很多片子是有较长的制作周期，很有可能这个周期没有很多华语片出现，并不代表整个华语片不行了，但是当前有很多情况可能会导致华语片在国际电影节越来越难，包括去年开始官方对国内电影外出政策收紧，不仅包括内容审查（拿龙标），还要进行技术审查，海外参赛需要提前报备，通过后才能报名参赛，这一系列政策导致电影拍摄到参赛周期无比漫长。此外，疫情期间电影院封停，电影行业处于低谷，融资状况差，也会影响电影制作。</p>
-<h2 id="可能入围戛纳的华语电影现状"><a href="#可能入围戛纳的华语电影现状" class="headerlink" title="可能入围戛纳的华语电影现状"></a>可能入围戛纳的华语电影现状</h2><p>娄烨导演的片子，目前还未做完</p>
-<p><img src="/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/p2743922539.webp" alt="img"></p>
-<p>邱阳导演的片子，二三月已经杀青，参加戛纳时间紧张，海外资金，无需审查</p>
-<p><img src="/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/p2870375583.webp" alt="img"></p>
-<p>贾樟柯导演目前没有新片<br>王小帅导演的《沃土》，但其离开戛纳很多年，回归较难</p>
-<p><img src="/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/p2623939228.webp" alt="img"></p>
-<p>陈哲艺导演的《燃冬》，已经杀青，但来不及参赛，从卡司阵容看估计会在国内上映。还有一部英语片，无需审查，最早可能在威尼斯或多伦多参赛</p>
-<p><img src="/2022/04/21/%E5%BD%93%E4%B8%8B%E7%9A%84%E5%8D%8E%E8%AF%AD%E7%94%B5%E5%BD%B1/p2867884058.webp" alt="img"></p>
-<h2 id="韩国电影环境"><a href="#韩国电影环境" class="headerlink" title="韩国电影环境"></a>韩国电影环境</h2><p>韩国电影工业振兴于90年代，现在的韩国电影就是八九十年代香港电影在全球的地位，在好莱坞被超级英雄片占领的当下，韩国电影还在源源不断输出非常好看，且全民老百姓都能看的大片，实属不易，引领着全球影视文化。与此同时，中国正好经历限韩令，官方渠道无法看到韩国影片，但韩流影响依然无处不在，大量影视改编高票房电影都是韩国版权翻牌，几乎韩国出的任何片子都被国内版权公司买空。韩国影视工业和文化工业强大的原因在于他们不仅有奉俊昊、李沧东、洪尚秀、朴赞郁这样在世界电影节上通吃的导演，整个电影工业商业类型片也全面开花。一个国家最基础的商业片电影工业不强的话，艺术片的出色也很有难度。奉俊昊、李沧东等导演的作品不仅具有极强的类型性和可看性，也有着极强的社会意义和政治隐喻，韩国电影正处于历史最好的时期。</p>
-<h2 id="日本电影环境"><a href="#日本电影环境" class="headerlink" title="日本电影环境"></a>日本电影环境</h2><p>日本情况比较复杂，票房也很萎靡，基本都是漫改。日本是东亚比较亲西方社会，最早打开国门的，比较西化，但日本文化有很强封闭性，大多数电影在国内自循环，不需要海外市场，类比日本的高等教育，和中韩不一样，日本没有那么多崇洋媚外，本土诺贝尔奖得主很多都没有留过洋，都是本土大学毕业，而中韩很多优秀人才都要去西方世界读博，日本电影类似，非常出色的艺术片甚至可能都会先在国内发行，核心诉求围绕国内上映时间，从某种角度可以说日本是一个高度自信的国家，无需去海外镀金证明自己，也可以说日本文化比较封闭，联想到当下中国电影市场，在巨大意识形态撕裂的国际形势下，本土官方试图缔造内部的评价体系，排斥国际三大电影节为主的西方评价体系，区别在于日本即能容纳西方，又能容纳本土完全不崇洋媚外的部分，中国当下官方意识形态对电影要求是更单纬度的，试图与整个国际市场脱钩的趋势。</p>
-<h2 id="港台电影的没落"><a href="#港台电影的没落" class="headerlink" title="港台电影的没落"></a>港台电影的没落</h2><p>华语片最好的时代是九十年代末，中国第五代出来，国际声望很好，台湾有侯孝贤、杨德昌、蔡明亮，香港有王家卫、杜琪峰，历史总是有巅峰，必然有暗淡的时期，电影又是大资本的艺术作品，非常依赖一个时期的经济和政治因素，当下经济和政治环境对艺术创作都是非常严苛的，中国电影市场本质与美国电影市场比较接近，以票房为导向，以娱乐产品为导向，与欧洲电影以作者美学和社会表达为导向是有很大区别的，当下环境是不鼓励这样的电影，在接下来十几二十年对想做这样艺术电影和文艺片导演来说，制作困境会越来越多，市场不在鼓励这样的片子，资本会更多涌向更能卖座的喜剧片和主旋律片，当下电影市场，官方并不care并不关心这些电影。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/15/%E6%94%B9%E5%8F%98%E8%87%AA%E5%B7%B1%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BF%AE%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sparkyqin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sparkyqin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/15/%E6%94%B9%E5%8F%98%E8%87%AA%E5%B7%B1%E6%98%AF%E4%B8%80%E7%A7%8D%E4%BF%AE%E8%A1%8C/" class="post-title-link" itemprop="url">改变自己是一种修行</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-15 23:23:39" itemprop="dateCreated datePublished" datetime="2022-03-15T23:23:39+08:00">2022-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-16 00:56:33" itemprop="dateModified" datetime="2022-03-16T00:56:33+08:00">2022-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很久之前就听说《非暴力沟通》这本书了，但一直没时间静下心来读，想到这里有些惭愧，没时间不能成为不读书的借口，前两天某个播客又提到了这本书，就顺手在某听书软件上听了解读，毕竟一个人开车的时候容易静下心来，养成了开车听音频的习惯，凭借有限的记忆，结合自身理解，将其总结如下。</p>
-<h2 id="什么是暴力沟通"><a href="#什么是暴力沟通" class="headerlink" title="什么是暴力沟通"></a>什么是暴力沟通</h2><p>举个现实生活的例子，有段时间赶项目，天天加班到十一二点，回家后老婆就很生气，说：“天天这么晚，家里啥都不管，谁知道你是加班还是喝酒去了”，她这么一说，我也很火大，本来就很累，回家还没喘口气，就被老婆一顿说，于是大吵一架，各自生一肚子气。这场景就是典型的暴力沟通。这属于生活小事，往大了说，很多国际争端，也充满了这样的暴力沟通和剧烈冲突，让民众饱受战争之苦，就像近期发生的俄乌冲突。</p>
-<p>显然，暴力沟通不但解决不了任何问题，还会让问题愈发严重，产生的后果就是让一个人，一个家庭，甚至一个群里，一个国家的人，都非常的不幸福，而《非暴力沟通》就是给出避免暴力沟通的方法。</p>
-<h2 id="为什么会产生暴力沟通"><a href="#为什么会产生暴力沟通" class="headerlink" title="为什么会产生暴力沟通"></a>为什么会产生暴力沟通</h2><p>有四个原因让我们的日常交流演变成了暴力行为，分别是：道德评判、进行比较、回避责任和强人所难。</p>
-<h3 id="道德评判"><a href="#道德评判" class="headerlink" title="道德评判"></a>道德评判</h3><p>用自己的价值观给别人贴标签。比如说，我上班的时候每天都要擦办公桌，但同事小王一个星期擦一次，也绝得挺干净，结果我就给小王贴上了“邋遢”和“懒惰”的标签。贴标签就是道德评判，这一刻我就产生了偏见，这种偏见会阻碍我和同事进行和平的交流。如果是和平的交流，我应该说：“小王啊，我发现你一礼拜才擦一次桌子，但是咱们办公室窗户不密封，灰太大，桌子落灰对你的身体不好，每天擦一次灰更好些。”这样的表达能够体现我的关心，但我已经给小王贴上邋遢、懒惰的标签，就会说：“小王，你也太懒了，桌子这么脏都能坐下去，赶紧擦擦吧！”语气变成了责怪，而责怪就是一种暴力行为。因此想要让语言变得平和，就需要表达客观事实，而不是对他人进行道德评判。</p>
-<h3 id="进行比较"><a href="#进行比较" class="headerlink" title="进行比较"></a>进行比较</h3><p>一个人总是和别人攀比，始终不能和别人处于一个平等的关系，那还谈什么交流呢？两个人处于相互攀比的状态，就像两个运动员赛跑一样，只有通过力量上的对抗，才能解决攀比的问题，而力量上的对抗也是一种暴力行为。所以，如果觉得和谁都难以交流的话，尝试反省自己，看看是不是总是拿自己和别人比较。</p>
-<h3 id="回避责任"><a href="#回避责任" class="headerlink" title="回避责任"></a>回避责任</h3><p>是指我们的表达方式经常忽略掉内心的情感根源。比如一个家庭主妇，总是抱怨自己每天不得不起早贪黑地伺候小孩，做家务。在孩子和丈夫面前抱怨不停，这种抱怨就代表逃避责任。这个妈妈本来也是出于对家庭的责任心和对孩子的爱才去做这些事，但一旦把表达方式换成“不得不做”时，她就不自觉忽略掉了原本的出发点，仿佛照顾的不是自己的孩子，打扫的不是自己的家一样，当她对孩子说：“妈妈都快累死了，成天给你当牛做马，你还不听话！”这样的语言对孩子来说难道不是一种暴力伤害吗？全职妈妈本来已经非常辛苦，工作价值也常常被忽略，如果再用这种暴力沟通的方式交流，更加深了家人之间的矛盾。</p>
-<h3 id="强人所难"><a href="#强人所难" class="headerlink" title="强人所难"></a>强人所难</h3><p>很多家长喜欢把自己的意愿强加给孩子，强迫孩子们做一些事情。比如说，孩子明明一直成绩就不太好，在班里排名倒数，平时大部分学科能考及格就不错了，可父母为了自己的面子一类的原因，就和孩子说，你将来必须考上清华或北大！父母强迫孩子做他不愿意，或者没能力做到的事情，这显然也是一种暴力。</p>
-<h2 id="暴力沟通深层次原因"><a href="#暴力沟通深层次原因" class="headerlink" title="暴力沟通深层次原因"></a>暴力沟通深层次原因</h2><p>作者没有把对暴力的研究停留在语言交流的层面，也没有停留在说话技巧上面。在作者看来，暴力可能无处不在，一个眼神、一个手势、一个不经意间的表情都可能会是引发暴力的罪魁祸首。换句话说，一个对世界充满恶意的人，看什么都不顺眼，怀着仇恨心态的人，肯定是经常陷入暴力沟通的，所以说，问题的关键不在于说话方式，而在于对自己和对这个世界的看法。</p>
-<h3 id="对自己的看法如何引起暴力冲突"><a href="#对自己的看法如何引起暴力冲突" class="headerlink" title="对自己的看法如何引起暴力冲突"></a>对自己的看法如何引起暴力冲突</h3><p>假如我对工作要求非常苛刻，有一天突然做错一件事，让公司损失一大笔钱，就算老板不说什么，我也会感到非常自责，我可能会对自己说：“我真是个废物，连这点事情都做不好”。这句话就包含两个暴力因素。首先，说自己是个废物，就是在进行道德评判，给自己贴标签。说自己这点事情都做不好，可谁又永远不犯错误？所以这句责备的话里还包含着对自己的强人所难。我对自己的看法是冷酷的、苛刻的、非常强硬的，那么无论怎么表达，都会造成一种暴力。我对自己都这么冷酷，更别提下属要是犯错，会给他贴上多少标签了。</p>
-<h3 id="对世界的看法是怎么引起暴力"><a href="#对世界的看法是怎么引起暴力" class="headerlink" title="对世界的看法是怎么引起暴力"></a>对世界的看法是怎么引起暴力</h3><p>希特勒就是因为看到世界的方式有问题，才会导致对犹太人的大屠杀。希特勒认为这个世界是优胜劣汰的，优秀的民族有资格生存，劣等民族就要被淘汰，如果你看待世界的方式也是这样，那你为了生存下去，就会不断和人比较，然后淘汰比你弱的。比较和淘汰别人，这些暴力因素，也必然会表现在你的生活当中。</p>
-<p>对自己和对世界的看法其实就是你的价值取向，而价值取向有两种：性本善和性本恶。本书作者认为，一切暴力行为的背后，都隐藏着性本恶的价值取向。当你认为人的本性是丑陋的、冷酷的，那么你自然会用相对应得方式去应对，这时候你就会陷入暴力当中。而当你认为人的本性是善良的、积极的，那么你就会用相对应的温柔的方式去应对，你就自然会离暴力因素越来越远。</p>
-<h2 id="非暴力沟通四要素"><a href="#非暴力沟通四要素" class="headerlink" title="非暴力沟通四要素"></a>非暴力沟通四要素</h2><p>四要素分别是：观察、感受、需要和请求。在日常生活当中，你可以通过这四要素，来不断提醒自己，让自己的思维方式向着有爱的方向发展。通过四要素的逻辑来重新组织语言，就是让你的语言结构不在是随意任性的，而是组合成一种平等的、互相尊重的语言。</p>
-<p>举个简单的例子来说，我交给你一份非常重要的商业机密文件，千叮咛万嘱咐地告诉你一定要保管好，结果呢？你刚答应完，扭头就把文件放在公共会议室，出去吃饭去了。等你回来，我可能会非常生气地说：“哎，我给你的这么重要的文件，你怎么就随便放在公共会议室啊？”这是责备别人的，是一种明显的暴力行为，接下来用非暴力沟通的思维逻辑再来表达一次。</p>
-<p>首先是观察，观察到你把机密文件放在公共会议室；其次是感受，我的感受是这么放文件不安全，而且我感到很失望，因为我嘱咐你好好保管，你也答应过我，可你却没有放在心上；再次是需要，最后是请求，指的是我先分辨出我需要什么，我再向你提出请求。这样思考下来，用非暴力沟通语言完整表达的话，就是“我看见刚才给你的重要文件没收起来，放在公共会议室了，这个我就担心不太安全，会议室人来人往，让客户看见就不好了，这么重要的文件既然交给你了，以后请你注意妥善保存”。</p>
-<p>这就是非暴力沟通的语言表达方式，如果熟悉了这样的语言结构，你和别人的关系会变得更加尊重、平等。不管是和人说话也好，反思自己也好，都可以用这四个要素来检查自己的思维。不断进行非暴力沟通修行以后，你会发现，你对这个世界会有一种性本善的信仰，这种信仰会让你避免暴力，生活在更加有爱的环境中。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/13/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="sparkyqin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sparkyqin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/13/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0/" class="post-title-link" itemprop="url">搭建自己的博客平台</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-13 22:56:26" itemprop="dateCreated datePublished" datetime="2022-03-13T22:56:26+08:00">2022-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-14 00:32:43" itemprop="dateModified" datetime="2022-03-14T00:32:43+08:00">2022-03-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>调研了当前主流的博客系统，决定选择GitHub Pages自建，主要原因还是它比较能切合我个人的诉求：免费及背靠GitHub强大的托管能力。话不多说，本篇博文记录了自建过程，也是在该平台上发表的第一篇文章，对我来说算是一个开启个人写作的里程碑。</p>
-<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>首先得有GitHub账号，如果没有，可在<a target="_blank" rel="noopener" href="https://github.com/">GitHub官网</a>进行注册。</p>
-<p>有了账号之后，新建一个仓库，仓名需定义为：用户名.github.io，后续通过https://用户名.github.io来访问，比如我的用户名是sparkyqin，所以我的仓库就是sparkyqin.github.io</p>
-<p><img src="/2022/03/13/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0/image-20220313230620259.png" alt="image-20220313230620259"></p>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>在<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git官网</a>找到对应平台版本进行安装，然后设置相关信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;github 用户名&quot;</span><br><span class="line">git config --global user.email &quot;github 注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成 ssh 密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;github 注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<p>将生成的秘钥配置进GitHub页面</p>
-<p><img src="/2022/03/13/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0/image-20220314003231465.png" alt="image-20220314003231465"></p>
-<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>在<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node官网</a>下载对应平台版本进行安装</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>是一个快速、简洁且高效的静态博客框架，它使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。我们只需要通过 Markdown 语法写好自己的博客内容，然后通过简单的命令就能够将生成的网页上传到 Github。</p>
-<ul>
-<li><p>安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g</span><br></pre></td></tr></table></figure></li>
-<li><p>初始化并安装必备组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init .</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
-<li><p>启动本地服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 新建博客</span><br><span class="line">hexo new &quot;博客名&quot;</span><br><span class="line"># 生成静态网页</span><br><span class="line">hexo g</span><br><span class="line"># 打开本地服务器</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>在浏览器中打开 <a href="http://localhost:4000即可预览刚生成的博客。">http://localhost:4000即可预览刚生成的博客。</a></p>
-<h1 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h1><p>在站点配置文件 _config.yml中设置个人仓库名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:sparkyqin/github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>使用如下命令将本地内容推送到远程GitHub仓，然后访问https://用户名.github.io即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h1 id="发布新博客"><a href="#发布新博客" class="headerlink" title="发布新博客"></a>发布新博客</h1><ul>
-<li><p>进入博客所在文件夹执行如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;博客标题名&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>在blog/source/_posts目录下可以看到新生成的md文件</p>
-</li>
-<li><p>打开该文件，编写你自己想要的内容即可，可使用<a target="_blank" rel="noopener" href="https://typora.io/">Typora</a></p>
-</li>
-<li><p>使用如下命令推送到远程 GitHub 仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h1><p>经过上面的设置之后，我们只是得到了一个简单地博客，如果你也想让你的博客像我的一样酷（zhuang）炫（bi），就要用到主题了，我采用的主题是<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">Next</a>，关于如何设置它有十分详细的文档</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -741,6 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%94%99%E8%AF%AF%E6%A3%80%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">传统的错误检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">多返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E6%B8%85%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">资源清理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">异常捕捉处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E8%BF%94%E5%9B%9E%E7%A0%81-vs-%E5%BC%82%E5%B8%B8%E6%8D%95%E6%8D%89"><span class="nav-number">5.</span> <span class="nav-text">错误返回码 vs 异常捕捉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">异步编程的错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">7.</span> <span class="nav-text">错误处理的最佳实践</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
